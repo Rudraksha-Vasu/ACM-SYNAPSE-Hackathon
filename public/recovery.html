@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Already clicked a suspicious link? Get a personal checklist for exposed passwords, verification codes, payments, downloads, and more.">
+  <title>Already clicked? · PhishGuard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="recovery.css">
+  <link rel="stylesheet" href="brand.css">
+  <script defer src="recovery-engine.js"></script><script defer src="recovery.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#recovery-form">Skip to questions</a>
+  <aside class="sidebar">
+    <a class="brand" href="index.html" aria-label="PhishGuard home"><span class="brand-icon"><img src="favicon.svg" alt="" aria-hidden="true"></span><span>PhishGuard<span class="brand-sub">Security, explained.</span></span></a>
+    <div class="nav-label">Workspace</div>
+    <nav aria-label="Main navigation">
+      <a href="index.html#scanner" class="nav-item" aria-label="Threat analyzer" title="Threat analyzer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Threat analyzer</a>
+      <a href="email.html" class="nav-item" aria-label="Email drafter" title="Email drafter"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Email drafter</a>
+      <a href="recovery.html" class="nav-item active" aria-current="page" aria-label="Already clicked?" title="Already clicked?"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="m6 6 3.5 3.5m5 5L18 18M6 18l3.5-3.5m5-5L18 6" stroke="currentColor" stroke-width="1.7"/></svg>Already clicked?<span class="nav-dot"></span></a>
+      <a href="index.html#approach" class="nav-item" aria-label="How it works" title="How it works"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v6M12 7v.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>How it works</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="small-shield">◈</span><p>A little clarity.<br>A safer next step.</p><span class="build-label">ACM SYNAPSE · PS3</span></div>
+  </aside>
+  <main id="top">
+    <header class="topbar"><span class="workspace-label">Already clicked?</span><span class="local-badge"><span></span>Your answers stay here</span></header>
+    <section class="intro" aria-labelledby="page-title"><div class="eyebrow">Take a breath. Start with the next step.</div><h1 id="page-title">Clicked a scam? Take action<span>.</span></h1><p>Tell us what happened. Get a checklist for what to do now,<br class="desktop-break"> what to check next, and what to watch for.</p></section>
+    <aside class="urgent-note" aria-label="Immediate help for financial fraud"><span class="urgent-icon" aria-hidden="true">!</span><div><h2>Money or banking access involved? Act now.</h2><p>Contact your bank through its official app or the number on your card. In India, call <a href="tel:1930">1930</a> for financial cyber fraud and report at <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">cybercrime.gov.in <span aria-hidden="true">↗</span></a>. You can do this before finishing these questions.</p></div></aside>
+    <section class="recovery-grid" aria-label="Recovery checklist workspace">
+      <div class="card questions-card">
+        <div class="card-top"><div><span class="step-label">01 / What happened</span><h2>Which of these happened?</h2></div><button type="button" id="reset-recovery" class="text-button">Reset <span aria-hidden="true">↺</span></button></div>
+        <p class="question-help" id="selection-help">Select everything that applies. Never enter a password, OTP, card number, or other private details here.</p>
+        <form id="recovery-form" novalidate>
+          <fieldset class="scenario-fieldset" aria-describedby="selection-help"><legend class="sr-only">What happened after the suspicious email or link?</legend><div id="scenario-options"></div></fieldset>
+          <fieldset class="context-fieldset"><legend>A little context</legend><label class="context-check" for="work-device"><input type="checkbox" id="work-device"><span>This involves a work or school account or device</span></label><label for="reporting-region">Reporting location</label><select id="reporting-region"><option value="india">India</option><option value="other">Outside India</option></select><p class="context-help">Used only to show relevant reporting guidance.</p></fieldset>
+          <div id="recovery-errors" class="input-errors" role="alert" hidden></div>
+          <button type="submit" class="analyze-button" id="build-plan">Build my action plan <span class="button-arrow" aria-hidden="true">→</span></button>
+        </form>
+        <p class="recovery-privacy"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M7 8V5a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.3"/></svg>Answers and checklist progress stay on this page and clear when you reload.</p>
+      </div>
+      <div class="plan-column">
+        <div id="recovery-empty" class="card recovery-empty"><span class="step-label">02 / Your next steps</span><div class="recovery-mark" aria-hidden="true"><img class="recovery-logo" src="favicon.svg" alt=""></div><h2>One step at a time.</h2><p>You don’t have to figure it all out at once.<br>Start with what you remember.</p><div class="empty-plan-stages"><span>Act now</span><span>Check next</span><span>Keep watch</span></div></div>
+        <section id="recovery-results" class="card recovery-results" aria-labelledby="plan-title" hidden>
+          <div class="plan-topline"><span class="step-label">02 / Your action plan</span><span id="plan-priority" class="plan-priority" hidden>Start now</span></div>
+          <h2 id="plan-title" tabindex="-1"></h2><p id="plan-summary" class="plan-summary"></p>
+          <div class="plan-progress"><span id="completion-count" role="status" aria-live="polite">0 steps marked done</span><button type="button" id="edit-answers" class="text-button">Edit answers <span aria-hidden="true">↖</span></button></div>
+          <p class="progress-help">Tick steps as you complete them. These ticks are a reminder, not a check that your accounts or device are safe.</p>
+          <div id="plan-actions"></div>
+          <div class="plan-export"><button type="button" id="copy-plan" class="secondary-button">Copy plan <span aria-hidden="true">⧉</span></button><button type="button" id="download-plan" class="secondary-button">Download plan <span aria-hidden="true">↓</span></button></div>
+          <div id="manual-copy-area" hidden><label for="manual-plan-copy">Copy your plan manually</label><textarea id="manual-plan-copy" readonly rows="8"></textarea></div>
+          <details class="plan-details"><summary>Sources and what this guide can do</summary><div><ul id="plan-sources"></ul><ul id="plan-limitations" class="plan-limitations"></ul></div></details>
+        </section>
+      </div>
+    </section>
+    <p id="recovery-status" class="recovery-status" role="status" aria-live="polite"></p>
+    <section class="recovery-basics" aria-label="Good habits after a suspicious message"><div><span>01</span><h3>Use a trusted route</h3><p>Open the official app or type a known address yourself. Avoid contact numbers and recovery links in the suspicious message.</p></div><div><span>02</span><h3>Keep useful evidence</h3><p>Save the message, sender details, and transaction references for your bank, provider, or report. Don’t revisit the link to collect more.</p></div><div><span>03</span><h3>Ask for support</h3><p>Scams are designed to create pressure. A trusted person or your IT team can help you work through the next steps.</p></div></section>
+    <footer class="page-footer"><span>PhishGuard <span class="footer-dot">·</span> Security, explained.</span><span>Built for ACM SYNAPSE <span class="footer-dot">/</span> PS3</span></footer>
+  </main>
+</body>
+</html>

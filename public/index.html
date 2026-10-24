@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Inspect suspicious URLs and emails with transparent, browser-local phishing indicator analysis.">
+  <title>PhishGuard — Inspect before you click</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="brand.css">
+  <script defer src="engine.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#scanner">Skip to analyzer</a>
+  <aside class="sidebar">
+    <a class="brand" href="#top" aria-label="PhishGuard home">
+      <span class="brand-icon"><img src="favicon.svg" alt="" aria-hidden="true"></span>
+      <span>PhishGuard<span class="brand-sub">Security, explained.</span></span>
+    </a>
+    <div class="nav-label">Workspace</div>
+    <nav aria-label="Main navigation">
+      <a href="index.html#scanner" class="nav-item active" data-section="scanner" aria-current="page" aria-label="Threat analyzer" title="Threat analyzer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Threat analyzer<span class="nav-dot"></span></a>
+      <a href="email.html" class="nav-item" aria-label="Email drafter" title="Email drafter"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Email drafter</a>
+      <a href="recovery.html" class="nav-item" aria-label="Already clicked?" title="Already clicked?"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="m6 6 3.5 3.5m5 5L18 18M6 18l3.5-3.5m5-5L18 6" stroke="currentColor" stroke-width="1.7"/></svg>Already clicked?</a>
+      <a href="#approach" class="nav-item" data-section="approach" aria-label="How it works" title="How it works"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v6M12 7v.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>How it works</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="small-shield">◈</span><p>A little clarity.<br>A safer next step.</p><span class="build-label">ACM SYNAPSE · PS3</span></div>
+  </aside>
+
+  <main id="top">
+    <header class="topbar"><span class="workspace-label">Threat analyzer</span><span class="local-badge"><span></span>Browser-local analysis</span></header>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow">A moment of caution goes a long way</div>
+      <h1 id="page-title">Inspect before you click<span>.</span></h1>
+      <p>Check a suspicious link or email. See the warning signs.<br class="desktop-break"> Understand the reasons behind every result.</p>
+    </section>
+
+    <aside class="recovery-callout" aria-label="Help after a suspicious interaction"><span><strong>Already clicked or shared something?</strong> Get a checklist for passwords, codes, payments, or downloads.</span><a href="recovery.html">Find your next steps <span aria-hidden="true">→</span></a></aside>
+
+    <section class="workspace-grid" id="scanner" aria-label="Phishing analyzer">
+      <div class="input-card card">
+        <div class="card-top"><div><span class="step-label">01 / Your input</span><h2>What looks suspicious?</h2></div><button type="button" id="reset" class="text-button">Reset <span aria-hidden="true">↺</span></button></div>
+        <div class="tabs" role="tablist" aria-label="Content type">
+          <button id="url-tab" class="tab active" type="button" role="tab" aria-selected="true" aria-controls="url-panel" tabindex="0" data-mode="url"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 14 4-4m-6 7-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2-1 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 0)" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Website URL</button>
+          <button id="email-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="email-panel" tabindex="-1" data-mode="email"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Email message</button>
+        </div>
+
+        <form id="analyze-form" novalidate>
+          <div id="url-panel" role="tabpanel" aria-labelledby="url-tab">
+            <label for="url-input">Website address</label>
+            <textarea id="url-input" rows="3" spellcheck="false" autocapitalize="none" autocomplete="off" placeholder="Paste a URL, e.g. https://example.com" aria-describedby="url-help"></textarea>
+            <p id="url-help" class="field-help">We inspect the address without opening the website.</p>
+          </div>
+          <div id="email-panel" role="tabpanel" aria-labelledby="email-tab" hidden>
+            <label for="sender-input">Sender address <span class="optional">optional</span></label>
+            <input id="sender-input" type="text" autocomplete="off" spellcheck="false" placeholder="sender@example.com">
+            <label for="subject-input">Subject <span class="optional">optional</span></label>
+            <input id="subject-input" type="text" autocomplete="off" placeholder="Email subject line">
+            <label for="body-input">Email content</label>
+            <textarea id="body-input" rows="5" spellcheck="false" placeholder="Paste the email message here. Include any links."></textarea>
+            <p class="field-help">Plain text or HTML. Sender authenticity cannot be verified from pasted text.</p>
+            <p class="composer-link">Writing an email? <a href="email.html">Open Email drafter <span aria-hidden="true">↗</span></a></p>
+          </div>
+          <div class="source-indicator" id="demo-indicator" hidden><span></span>Demo example loaded</div>
+          <div id="input-errors" class="input-errors" role="alert" hidden></div>
+          <button id="analyze-button" type="submit" class="analyze-button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 21 6v6c0 5-5 9-9 10-4-1-9-5-9-10V6l9-4Z" stroke="currentColor" stroke-width="1.7"/><path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="analyze-label">Analyze URL</span><span class="button-arrow" aria-hidden="true">→</span></button>
+        </form>
+
+        <div class="examples"><div class="examples-heading"><span>Just exploring?</span><span>Try an example <span aria-hidden="true">↙</span></span></div><div class="example-buttons" id="example-buttons"></div></div>
+        <div class="privacy-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M7 8V5a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.3"/></svg><span>Analysis stays in this browser. No links are opened.</span></div>
+      </div>
+
+      <div class="result-column" id="result-column">
+        <div id="empty-result" class="empty-result">
+          <div class="empty-label"><span class="step-label">02 / Your assessment</span><span class="awaiting"><span></span>Ready when you are</span></div>
+          <div class="shield-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit-dot"></span><img class="brand-illustration" src="favicon.svg" alt=""><span class="art-spark spark-one">+</span><span class="art-spark spark-two">+</span></div>
+          <h2>Clarity starts with a check.</h2><p>Paste a link or message to reveal the<br>warning signs hiding in plain sight.</p>
+          <div class="empty-rule"></div><div class="empty-features"><span><span class="feature-dot"></span>Clear explanations</span><span><span class="feature-dot"></span>No account needed</span></div>
+        </div>
+        <section id="analysis-result" class="analysis-result card" aria-label="Analysis result" hidden>
+          <div class="result-top"><span class="step-label">02 / Your assessment</span><span id="result-kind" class="result-kind">URL analysis</span></div>
+          <div class="score-overview"><div class="score-ring" id="score-ring" role="meter" aria-label="Indicator score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="score-center"><span id="score-value">0</span><span class="score-out-of">/ 100</span></div></div><div class="assessment-copy"><span id="concern-pill" class="concern-pill">Low concern</span><h2 id="assessment-title">Assessment</h2><p>Indicator score,<br>not a probability.</p></div></div>
+          <p class="result-summary" id="result-summary"></p>
+          <div class="hostname-box" id="hostname-box" hidden><span>Destination hostname</span><code id="hostname-value"></code></div>
+          <div id="findings-section" class="findings-section"><div class="section-title"><h3>What we found</h3><span id="findings-count"></span></div><div id="findings-list"></div></div>
+          <div class="result-actions"><button type="button" id="copy-report" class="report-button"><span aria-hidden="true">⧉</span> Copy report</button><button type="button" id="download-report" class="report-button"><span aria-hidden="true">↓</span> Download report</button></div>
+        </section>
+      </div>
+    </section>
+    <div class="action-status" id="action-status" role="status" aria-live="polite"></div>
+    <div class="sr-only" id="result-announcement" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <section id="details-panel" class="details-grid" hidden>
+      <div class="card detail-card"><span class="step-label">The details</span><h2>Checks performed</h2><div id="checks-list"></div></div>
+      <div class="card detail-card limitations-card"><span class="step-label">Keep in mind</span><h2>What this assessment means</h2><p>A low score means fewer indicators were found. It does not prove the content is safe.</p><ul id="limitations-list"></ul><div class="next-step"><span aria-hidden="true">↗</span><p>When in doubt, verify using the organisation’s known website or contact details.</p></div></div>
+    </section>
+
+    <details class="approach card" id="approach">
+      <summary><span><span class="approach-icon" aria-hidden="true">i</span>How PhishGuard works</span><span class="details-chevron" aria-hidden="true">+</span></summary>
+      <div class="approach-content">
+        <p>Paste a website address or an incoming email, then select Analyze. PhishGuard checks the supplied text in your browser and explains the indicators it finds.</p>
+        <div class="approach-columns">
+          <div><h3>1. Inspect the URL</h3><p>We identify the destination hostname and check for embedded usernames, selected brand lookalikes, IP addresses, HTTP, short links, and unusual ports. Submitted links are never opened.</p></div>
+          <div><h3>2. Inspect the email</h3><p>We look for requests for sensitive information, pressure tactics, sender/domain inconsistencies, and links in the message. The Email message tab checks incoming content; <a href="email.html">Email drafter</a> helps you review an outgoing message and create a draft to copy into your email app.</p></div>
+          <div><h3>3. Explain the score</h3><p>Each matched rule adds indicator points, capped at 100. Scores of 0–24 are low concern, 25–59 medium concern, and 60–100 high concern. The score is not a probability.</p></div>
+          <div><h3>4. Verify in context</h3><p>Review the evidence and contact the organisation through a known channel when something looks suspicious. Pasted text cannot authenticate a sender, and a low score does not establish safety.</p></div>
+        </div>
+        <p class="approach-footnote">This prototype uses explainable rules. It does not visit destinations, inspect attachments, query live reputation services, or use a trained machine-learning classifier.</p>
+      </div>
+    </details>
+    <footer class="page-footer"><span>PhishGuard <span class="footer-dot">·</span> Security, explained.</span><span>Built for ACM SYNAPSE <span class="footer-dot">/</span> PS3</span></footer>
+  </main>
+</body>
+</html>
